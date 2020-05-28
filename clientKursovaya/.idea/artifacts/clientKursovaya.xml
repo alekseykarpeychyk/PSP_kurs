@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="clientKursovaya">
+    <output-path>$PROJECT_DIR$/out/artifacts/clientKursovaya</output-path>
+    <root id="root">
+      <element id="archive" name="clientKursovaya.jar">
+        <element id="module-output" name="clientKursovaya" />
+      </element>
+      <element id="library" level="project" name="javafx" />
+      <element id="library" level="project" name="json-20190722" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.19" />
+      <element id="artifact" artifact-name="clientKursovaya:jar" />
+    </root>
+  </artifact>
+</component>

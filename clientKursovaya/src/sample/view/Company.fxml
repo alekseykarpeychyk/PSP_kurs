@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="431.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.CompanyController">
+   <children>
+      <StackPane layoutX="122.0" prefHeight="431.0" prefWidth="609.0">
+         <children>
+            <Pane fx:id="statistics_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" />
+            <Pane fx:id="recordStat_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Text layoutX="192.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Заполнение статистики">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="158.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user-setting-icon.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="year_field" layoutX="340.0" layoutY="118.0" prefHeight="25.0" prefWidth="64.0" promptText="Год" />
+                  <TextField fx:id="revenue_field" layoutX="417.0" layoutY="118.0" prefHeight="25.0" prefWidth="64.0" promptText="Доходы" />
+                  <TextField fx:id="expenses_field" layoutX="495.0" layoutY="117.0" prefHeight="25.0" prefWidth="64.0" promptText="Расходы" />
+                  <TableView fx:id="stat_table" layoutX="23.0" layoutY="118.0" prefHeight="155.0" prefWidth="282.0">
+                    <columns>
+                      <TableColumn fx:id="year_column" prefWidth="59.333343505859375" text="Год" />
+                      <TableColumn fx:id="revenue_column" prefWidth="67.33329772949219" text="Доходы, $" />
+                        <TableColumn fx:id="expenses_column" prefWidth="74.6666259765625" text="Расходы, $" />
+                        <TableColumn fx:id="profit_column" prefWidth="72.66668701171875" text="Прибыль, $" />
+                    </columns>
+                  </TableView>
+                  <Text layoutX="23.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Финансовые показатели предприятия" underline="true" wrappingWidth="224.642578125" />
+                  <Button fx:id="build_button" layoutX="63.0" layoutY="333.0" mnemonicParsing="false" onAction="#buildGraph" prefHeight="48.0" prefWidth="158.0" text="Построить график">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Button fx:id="addInf_button" layoutX="415.0" layoutY="151.0" mnemonicParsing="false" onAction="#addStatistic" text="Добавить" />
+                  <GridPane layoutX="315.0" layoutY="204.0" prefHeight="176.0" prefWidth="237.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children></Pane>
+            <Pane fx:id="deliveries_pane" prefHeight="431.0" prefWidth="443.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ImageView fitHeight="55.0" fitWidth="52.0" layoutX="532.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/unnamed.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="firma_table" layoutX="14.0" layoutY="182.0" prefHeight="200.0" prefWidth="582.0">
+                    <columns>
+                      <TableColumn fx:id="number_column" prefWidth="35.33331298828125" text="№" />
+                      <TableColumn fx:id="firma_column" prefWidth="152.00003051757812" text="Фирма-поставщик" />
+                        <TableColumn fx:id="unp_column" prefWidth="84.0" text="УНП" />
+                        <TableColumn fx:id="material_column" prefWidth="120.0" text="Материал" />
+                        <TableColumn fx:id="cost_column" prefWidth="92.66668701171875" text="Стоимость, $" />
+                        <TableColumn fx:id="time_column" prefWidth="98.0" text="Сроки, сут." />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="find_field" layoutX="14.0" layoutY="151.0" onAction="#searchFirma" prefHeight="25.0" prefWidth="394.0" promptText="🔍 Введите параметр для поиска" />
+                  <Button fx:id="edit_button" layoutX="418.0" layoutY="151.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Изменить">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete_button" layoutX="497.0" layoutY="151.0" mnemonicParsing="false" onAction="#deleteFirm" prefHeight="25.0" prefWidth="99.0" text="Удалить">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="addTask_button" layoutX="235.0" layoutY="392.0" mnemonicParsing="false" onAction="#adPrForTask" text="Добавить для анализа">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <TextField fx:id="firma_field" layoutX="19.0" layoutY="102.0" prefHeight="25.0" prefWidth="186.0" promptText="Фирма-поставщик" />
+                  <TextField fx:id="unp_field" layoutX="210.0" layoutY="102.0" prefHeight="25.0" prefWidth="86.0" promptText="УНП" />
+                  <TextField fx:id="material_field" layoutX="302.0" layoutY="102.0" prefHeight="25.0" prefWidth="86.0" promptText="Материал" />
+                  <TextField fx:id="cost_field" layoutX="394.0" layoutY="102.0" prefHeight="25.0" prefWidth="69.0" promptText="Стоимость" />
+                  <TextField fx:id="time_field" layoutX="471.0" layoutY="102.0" prefHeight="25.0" prefWidth="51.0" promptText="Сроки" />
+                  <Button fx:id="add_button" layoutX="544.0" layoutY="91.0" mnemonicParsing="false" onAction="#addFirma" opacity="0.0" prefHeight="48.0" prefWidth="52.0" text="Button">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text layoutX="87.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите данные для обновления информации о поставщиках" />
+                  <Text layoutX="217.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Управление поставками">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="52.0" fitWidth="36.0" layoutX="187.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user-setting-icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="calculator_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ImageView fitHeight="104.0" fitWidth="418.0" layoutX="104.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/table.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="155.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Решение поставленной задачи">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="64.0" fitWidth="105.0" layoutX="104.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pencil-icon-614x460.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="104.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Запишите экспертные оценки в таблицу" />
+                  <TextField fx:id="po1_field" layoutX="305.0" layoutY="184.0" prefHeight="25.0" prefWidth="64.0" promptText="Оценка 1" />
+                  <TextField fx:id="oo1_field" layoutX="305.0" layoutY="216.0" prefHeight="25.0" prefWidth="64.0" promptText="Оценка 1" />
+                  <TextField fx:id="po2_field" layoutX="376.0" layoutY="184.0" prefHeight="25.0" prefWidth="69.0" promptText="Оценка 2" />
+                  <TextField fx:id="oo2_field" layoutX="376.0" layoutY="216.0" prefHeight="25.0" prefWidth="69.0" promptText="Оценка 2" />
+                  <TextField fx:id="po3_field" layoutX="448.0" layoutY="184.0" prefHeight="25.0" prefWidth="69.0" promptText="Оценка 3" />
+                  <TextField fx:id="oo3_field" layoutX="448.0" layoutY="216.0" prefHeight="25.0" prefWidth="69.0" promptText="Оценка 3" />
+                  <Button fx:id="enter_button" layoutX="448.0" layoutY="255.0" mnemonicParsing="false" onAction="#singlSolution" prefHeight="25.0" prefWidth="73.0" text="Высчитать" />
+                  <TableView fx:id="mat_table" layoutX="104.0" layoutY="301.0" prefHeight="91.0" prefWidth="245.0">
+                    <columns>
+                      <TableColumn fx:id="mat_column" prefWidth="243.66664123535156" text="Материал для анализа" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="delMat_button" layoutX="197.0" layoutY="392.0" mnemonicParsing="false" onAction="#deletePr" text="Удалить" />
+                  <TextField fx:id="oProfit_field" layoutX="335.0" layoutY="255.0" prefHeight="25.0" prefWidth="69.0" promptText="Прибыль" />
+                  <Text layoutX="104.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите ожидаемую среднюю прибыль" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <Pane prefHeight="431.0" prefWidth="121.0" style="-fx-background-color: #cbf2cb;">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="79.0" layoutX="18.0" layoutY="6.0" opacity="0.26" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/login.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="51.0" layoutX="45.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/157938.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="79.0" fitWidth="121.0" layoutX="11.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/box-icon-614x460.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="86.0" layoutX="18.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/calculator-icon-614x460.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="21.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Управление поставками" textAlignment="CENTER" wrappingWidth="86.0" />
+            <Text layoutX="21.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вычисление рисков" textAlignment="CENTER" wrappingWidth="86.0" />
+            <Text layoutX="29.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Статистика" wrappingWidth="86.0" />
+            <Button fx:id="deliveries_button" layoutX="29.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleCliks" opacity="0.0" prefHeight="64.0" prefWidth="69.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="calculator_button" layoutX="28.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleCliks" opacity="0.0" prefHeight="72.0" prefWidth="69.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="exit_button" layoutX="27.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleCliks" opacity="0.0" prefHeight="52.0" prefWidth="64.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="105.0" fitWidth="121.0" layoutX="2.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pie-graph-percent-icon-614x460.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="recordStat_button" layoutX="26.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleCliks" opacity="0.0" prefHeight="72.0" prefWidth="69.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
